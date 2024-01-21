@@ -1,0 +1,15 @@
+# vpc.tf /24
+
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/24"
+  tags = {
+    Name = "Spice_Networks"
+  }
+}
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "Spice_Internet_Gateway" 
+  }
+}
